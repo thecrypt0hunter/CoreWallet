@@ -2,16 +2,16 @@
 | :---- | :------ | :---- |
 | [![Build Status](https://dev.azure.com/SolarisPlatform/SolarisCore/_apis/build/status/Hosted%20Windows%20Container)](https://dev.azure.com/SolarisPlatform/SolarisCore/_build/latest?definitionId=16) | [![Build Status](https://dev.azure.com/SolarisPlatform/SolarisCore/_apis/build/status/Hosted%20macOS)](https://dev.azure.com/SolarisPlatform/SolarisCore/_build/latest?definitionId=18) | [![Build Status](https://dev.azure.com/SolarisPlatform/SolarisCore/_apis/build/status/Hosted%20Ubuntu%201604)](https://dev.azure.com/SolarisPlatform/SolarisCore/_build/latest?definitionId=17)
 
-# ObsidianX Core
+# City Core
 
-This is the repository of the ObsidianX Core Wallet, a full node staking wallet using Electron and Angular at the front-end and .NET Core with C# in the back-end.
+This is the repository of the City Core Wallet, a full node staking wallet using Electron and Angular at the front-end and .NET Core with C# in the back-end.
 
-# Building and running the ObsidianX Core daemon
+# Building and running the City Chain daemon
 
-The ObsidianX Core daemon is the backend REST service, hosting a ObsidianX node upon which ObsidianX Core depends.  
-The ObsidianX Core daemon is hosted in another repository. All information on building and running the daemon can be found [here](https://github.com/obsidianproject/Obsidian-StratisNode/blob/master/Documentation/getting-started.md).
+The City Chain daemon is the backend REST service, hosting a City Chain node upon which City Core depends.  
+The City Chain daemon is hosted in another repository. All information on building and running the daemon can be found [here](https://github.com/CityChainFoundation/city-chain/blob/master/Documentation/getting-started.md).
 
-# Building and running the ObsidianX Core user interface
+# Building and running the City Core user interface
 
 ## Install NodeJS
 
@@ -22,12 +22,12 @@ Download and install the latest Long Term Support (LTS) version of NodeJS at: ht
 Clone this repository locally:
 
 ``` bash
-git clone https://github.com/obsidianproject/CoreWallet.git
+git clone https://github.com/CityChainFoundation/CityCore
 ```
 
 Navigate to the StratisCore.UI folder in a terminal:
 ``` bash
-cd ./CoreWallet/StratisCore.UI
+cd ./CityCore/StratisCore.UI
 ```
 
 ## Install dependencies with npm:
@@ -41,7 +41,7 @@ npm install
 ## Run the UI in development mode
 
 #### Terminal Window 1
-[Run the daemon](https://github.com/obsidianproject/Obsidian-StratisNode/blob/master/Documentation/getting-started.md)  
+[Run the daemon](https://github.com/CityChainFoundation/city-chain/blob/master/Documentation/getting-started.md)  
 
 #### Terminal Window 2
 Use `npm run mainnet` to start the UI in mainnet mode or `npm run testnet` to start the UI in testnet mode.  
@@ -58,9 +58,4 @@ This will compile the Angular code and spawn the Electron process.
 |`npm run package:mac`|  On a MAC OS, builds your application and generates a `.app` file of your application that can be run on Mac |
 
 **The application is optimised. Only the files of /dist folder are included in the executable. Distributable packages can be found in the StratisCore.UI/app-builds/ folder**
-
-## CI Build
------------
-
-Every time someone pushes to the master branch or create a pull request on it, a build is triggered and a new unstable app release is created.
 

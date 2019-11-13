@@ -92,8 +92,8 @@ export class ColdStakingCreateComponent implements OnInit, OnDestroy {
 
     sendValidationMessages = {
         'hotWalletAddress': {
-            'required': 'An hot wallet address is required.',
-            'minlength': 'An hot wallet address is at least 26 characters long.'
+            'required': 'An delegated staking address is required.',
+            'minlength': 'An a delegated staking address is at least 26 characters long.'
         },
         'amount': {
             'required': 'An amount is required.',
@@ -153,7 +153,6 @@ export class ColdStakingCreateComponent implements OnInit, OnDestroy {
         const amount = this.sendForm.get("amount").value;
         const hotWalletAddress = this.sendForm.get("hotWalletAddress").value.trim();
         const accountName = "account 0";
-        const segwitChangeAddress = true;
 
         this.stakingService.createColdStakingAccount(walletName, walletPassword, true)
           .subscribe(
@@ -166,8 +165,7 @@ export class ColdStakingCreateComponent implements OnInit, OnDestroy {
                       walletName,
                       walletPassword,
                       accountName,
-                      this.selectedFeeType.value,
-                      segwitChangeAddress                     
+                      this.selectedFeeType.value
                     ))
                     .subscribe(
                       createColdstakingResponse => {

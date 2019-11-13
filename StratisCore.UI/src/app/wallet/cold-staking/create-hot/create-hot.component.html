@@ -1,5 +1,5 @@
 <div class="modal-header">
-  <h5 class="modal-title">Hot wallet setup</h5>
+  <h5 class="modal-title">Delegated wallet setup</h5>
   <button type="button" class="close closemodal ml-auto" data-dismiss="modal" aria-label="Close" (click)="activeModal.close('Close click')">
     <i class="lnr lnr-cross"></i>
   </button>
@@ -7,7 +7,7 @@
 <div class="modal-body" *ngIf="!address">
   <form [formGroup]="sendForm">
     <div class="form-group">
-      Enter your password and we'll create the hot address for you.
+      Enter your password and we'll create the delegated address for you.
     </div>
     <div class="form-group clearfix">
       <label for="walletPassword">Wallet Password</label>
@@ -27,12 +27,12 @@
 </div>
 <div class="modal-body" *ngIf="address">
   <form>
-    <label>Your hot wallet address</label>
+    <label>Your delegated wallet address</label>
     <div class="form-group">
-      Here's your hot address. Use this address to configure your cold staking setup.
+      Here's your hot address. Use this address to configure your delegated staking setup.
     </div>
     <div class="text-danger mb-3">
-      <span class="lnr lnr-warning"></span> Only use this address for Cold Staking setup. Normal transactions to this address are not recoverable.
+      <span class="lnr lnr-warning"></span> Only use this address for delegated staking setup. Normal transactions to this address are not recoverable.
     </div>
     <div class="input-group">
       <input class="form-control" type="text" placeholder="{{address}}" readonly>
