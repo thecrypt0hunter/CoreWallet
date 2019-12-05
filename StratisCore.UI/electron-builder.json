@@ -1,6 +1,6 @@
 {
-  "appId": "com.obsidian.core",
-  "productName": "Obsidian Core",
+  "appId": "com.solarisplatform.core",
+  "productName": "Solaris Core",
   "publish": null,
   "directories": {
     "output": "app-builds"
@@ -30,9 +30,10 @@
   "linux": {
     "icon": "dist/assets/images/",
     "target": [
-      "AppImage"
+      "deb",
+      "tar.gz"
     ],
-    "synopsis": "StratisCore.UI: Obsidian' staking wallet.",
+    "synopsis": "StratisCore.UI: Solaris' staking wallet.",
     "category": "Utility",
     "artifactName": "${productName}-v${version}-${os}-${arch}.${ext}"
   },
