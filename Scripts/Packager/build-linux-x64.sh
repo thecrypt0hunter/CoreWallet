@@ -37,7 +37,14 @@ cd $build_directory/SolarisBitcoinFullNode/src/Stratis.SolarisD
 sudo dotnet clean
 sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
-cp ~/projects/blockcore/Stratis.Fodynlogadapter/lib/netstandard2.0/* $build_directory/StratisCore.UI/daemon/
+
+# Workaround to install FodyNlogAdapter
+mkdir ~/fody
+wget -P ~/fody https://globalcdn.nuget.org/packages/stratis.fodynlogadapter.3.0.4.1.nupkg
+unzip ~/fody/stratis.fodynlogadapter.3.0.4.1.nupkg -d ~/fody
+cp ~/fody/lib/netstandard2.0/* $build_directory/StratisCore.UI/daemon/
+rm -rf ~/fody
+
 echo $log_prefix chmoding the file
 sudo chmod +x $build_directory/StratisCore.UI/daemon/Stratis.SolarisD
 
