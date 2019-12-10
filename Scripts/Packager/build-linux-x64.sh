@@ -27,7 +27,7 @@ git submodule update --init --recursive
 cd $build_directory/StratisCore.UI
 
 echo $log_prefix Running npm install
-sudo npm install --verbose
+npm install --verbose
 
 echo $log_prefix FINISHED restoring dotnet and npm packages
 
@@ -42,7 +42,7 @@ sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_direc
 mkdir ~/fody
 wget -P ~/fody https://globalcdn.nuget.org/packages/stratis.fodynlogadapter.3.0.4.1.nupkg
 unzip ~/fody/stratis.fodynlogadapter.3.0.4.1.nupkg -d ~/fody
-cp ~/fody/lib/netstandard2.0/* $build_directory/StratisCore.UI/daemon/
+sudo cp ~/fody/lib/netstandard2.0/* $build_directory/StratisCore.UI/daemon/
 rm -rf ~/fody
 
 echo $log_prefix chmoding the file
@@ -51,7 +51,7 @@ sudo chmod +x $build_directory/StratisCore.UI/daemon/Stratis.SolarisD
 # node Build
 cd $build_directory/StratisCore.UI
 echo $log_prefix Building and packaging StratisCore.UI
-sudo npm install
+npm install
 sudo npm run package:linux
 echo $log_prefix finished packaging
 
