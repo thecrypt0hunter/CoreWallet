@@ -5,7 +5,7 @@ configuration=Release
 os_platform=linux
 log_prefix=LINUX-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/Solaris/Release"
+release_directory="/tmp/city/release"
 
 # exit if error
 set -o errexit
@@ -33,7 +33,7 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/SolarisBitcoinFullNode/src/Stratis.SolarisD
+cd $build_directory/city-chain/src/City.Chain
 sudo dotnet clean
 sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
@@ -46,7 +46,7 @@ sudo cp ~/fody/lib/netstandard2.0/* $build_directory/StratisCore.UI/daemon/
 rm -rf ~/fody
 
 echo $log_prefix chmoding the file
-sudo chmod +x $build_directory/StratisCore.UI/daemon/Stratis.SolarisD
+sudo chmod +x $build_directory/StratisCore.UI/daemon/City.Chain
 
 # node Build
 cd $build_directory/StratisCore.UI

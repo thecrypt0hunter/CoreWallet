@@ -99,47 +99,6 @@
           </div>
         </div>
       </div>
-      <div class="row mb-2 mt-2">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <h3 class="title-bottom-border text-uppercase">Txbit XLR/BTC Statistics</h3>
-              <div class="row pl-2">
-                <div class="col">
-                  <h3 class="text-uppercase">
-                    PRICE
-                  </h3>
-                  <span class="{{ priceClass }}"><span class="lnr {{ priceIcon }}"></span> {{ lastPrice }} BTC</span>
-                </div>
-                <div class="col">
-                  <h3 class="text-uppercase">
-                    24H CHANGE
-                  </h3>
-                  <span class="{{ priceClass }}">{{ priceChange }} %</span>
-                </div>
-                <div class="col">
-                  <h3 class="text-uppercase">
-                    High
-                  </h3>
-                  <span>{{ highPrice }} BTC</span>
-                </div>
-                <div class="col">
-                  <h3 class="text-uppercase">
-                    Low
-                  </h3>
-                  <span>{{ lowPrice }} BTC</span>
-                </div>
-                <div class="col">
-                  <h3 class="text-uppercase">
-                    24H Volume
-                  </h3>
-                  <span>{{ baseVolume }} BTC</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row" *ngIf="transactionArray">
         <div class="col-12">
           <div class="card h-100">
