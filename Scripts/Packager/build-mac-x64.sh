@@ -32,12 +32,12 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/Obsidian-StratisNode/src/Obsidian.OxD
+cd $build_directory/SolarisBitcoinFullNode/src/Stratis.SolarisD
 dotnet restore
 dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
-echo $log_prefix chmoding the Redstone.RedstoneFullNodeD file
-chmod +x $build_directory/StratisCore.UI/daemon/Redstone.RedstoneFullNodeD
+echo $log_prefix chmoding the file
+chmod +x $build_directory/StratisCore.UI/daemon/Stratis.SolarisD
 
 # node packaging
 echo $log_prefix Building and packaging StratisCore.UI

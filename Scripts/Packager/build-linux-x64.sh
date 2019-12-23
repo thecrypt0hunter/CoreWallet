@@ -5,7 +5,7 @@ configuration=Release
 os_platform=linux
 log_prefix=LINUX-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/Obsidian/Release"
+release_directory="/tmp/Solaris/Release"
 
 # exit if error
 set -o errexit
@@ -27,24 +27,31 @@ git submodule update --init --recursive
 cd $build_directory/StratisCore.UI
 
 echo $log_prefix Running npm install
-sudo npm install --verbose
+npm install --verbose
 
 echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/Obsidian-StratisNode/src/Obsidian.OxD
+cd $build_directory/SolarisBitcoinFullNode/src/Stratis.SolarisD
 sudo dotnet clean
 sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
-echo $log_prefix chmoding the Obsidian.OxD file
-sudo chmod +x $build_directory/StratisCore.UI/daemon/Obsidian.OxD
+# Workaround to install FodyNlogAdapter
+mkdir ~/fody
+wget -P ~/fody https://globalcdn.nuget.org/packages/stratis.fodynlogadapter.3.0.4.1.nupkg
+unzip ~/fody/stratis.fodynlogadapter.3.0.4.1.nupkg -d ~/fody
+sudo cp ~/fody/lib/netstandard2.0/* $build_directory/StratisCore.UI/daemon/
+rm -rf ~/fody
+
+echo $log_prefix chmoding the file
+sudo chmod +x $build_directory/StratisCore.UI/daemon/Stratis.SolarisD
 
 # node Build
 cd $build_directory/StratisCore.UI
 echo $log_prefix Building and packaging StratisCore.UI
-sudo npm install
+npm install
 sudo npm run package:linux
 echo $log_prefix finished packaging
 

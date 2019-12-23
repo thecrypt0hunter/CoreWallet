@@ -187,19 +187,83 @@ export class ColdStakingCreateComponent implements OnInit, OnDestroy {
                         this.isSending = false;
                         this.apiError = error.error.errors[0].message;
                       }
-                    );
-                },
-                error => {
-                  this.isSending = false;
-                  this.apiError = error.error.errors[0].message;
-                });
-            },
-            error => {
-              this.isSending = false;
-              this.apiError = error.error.errors[0].message;
-            }
+                  }
+              }
           );
-    }
+  };
 
-    
+  private startSubscriptions() {
+      this.getWalletBalance();
+  }
+
+  private cancelSubscriptions() {
+      if (this.walletBalanceSubscription) {
+          this.walletBalanceSubscription.unsubscribe();
+      }
+  };
+
+  public send() {
+      this.isSending = true;
+      this.buildTransaction();
+  };
+
+  public ngOnDestroy() {
+      this.cancelSubscriptions();
+  };
+
+  public buildTransaction(): void {
+      const walletName = this.globalService.getWalletName();
+      const walletPassword = this.sendForm.get("password").value;
+      const amount = this.sendForm.get("amount").value;
+      const hotWalletAddress = this.sendForm.get("hotWalletAddress").value.trim();
+      const accountName = "account 0";
+
+      this.stakingService.createColdStakingAccount(walletName, walletPassword, true)
+        .subscribe(
+          createColdStakingAccountResponse => {
+            this.stakingService.getAddress(walletName, true).subscribe(getAddressResponse => {
+                this.stakingService.createColdstaking(new ColdStakingSetup(
+                    hotWalletAddress,
+                    getAddressResponse.address,
+                    amount,
+                    walletName,
+                    walletPassword,
+                    accountName,
+                    this.selectedFeeType.value
+                  ))
+                  .subscribe(
+                    createColdstakingResponse => {
+                      const transaction = new TransactionSending(createColdstakingResponse.transactionHex);
+                      this.apiService
+                        .sendTransaction(transaction)
+                        .subscribe(
+                          sendTransactionResponse => {
+                            this.modalService.open(ColdStakingCreateSuccessComponent, { backdrop: 'static' }).result
+                              .then(_ => this.activeModal.close());                              
+                          },
+                          error => {
+                            this.isSending = false;
+                            this.apiError = error.error.errors[0].message;
+                          }
+                        );
+                    },
+                    error => {
+                      this.isSending = false;
+                      this.apiError = error.error.errors[0].message;
+                    }
+                  );
+              },
+              error => {
+                this.isSending = false;
+                this.apiError = error.error.errors[0].message;
+              });
+          },
+          error => {
+            this.isSending = false;
+            this.apiError = error.error.errors[0].message;
+          }
+        );
+  }
+
+  
 }

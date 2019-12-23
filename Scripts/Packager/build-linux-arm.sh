@@ -5,7 +5,7 @@ configuration=Release
 os_platform=linux
 log_prefix=LINUXARM-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/Obsidian/Release"
+release_directory="/tmp/Solaris/Release"
 
 # exit if error
 set -o errexit
@@ -33,16 +33,16 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/Obsidian-StratisNode/src/Obsidian.OxD
+cd $build_directory/SolarisBitcoinFullNode/src/Stratis.SolarisD
 sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
-echo $log_prefix chmoding the Obsidian.OxD file
-sudo chmod +x $build_directory/StratisCore.UI/daemon/Obsidian.OxD
+echo $log_prefix chmoding the file
+sudo chmod +x $build_directory/StratisCore.UI/daemon/Solaris
 
 # node Build
 cd $build_directory/StratisCore.UI
-echo $log_prefix Building and packaging Redstone Wallet
+echo $log_prefix Building and packaging Wallet
 sudo npm install
 sudo npm run package:linuxarm
 echo $log_prefix finished packaging
