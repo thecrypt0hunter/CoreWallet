@@ -1,3 +1,3 @@
-[submodule "SolarisBitcoinFullNode"]
-	path = SolarisBitcoinFullNode
-	url = https://github.com/SolarisPlatform/SolarisBitcoinFullNode.git
+[submodule "city-chain"]
+	path = city-chain
+	url = https://github.com/CityChainFoundation/city-chain.git

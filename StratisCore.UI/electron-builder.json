@@ -1,6 +1,6 @@
 {
-  "appId": "com.solarisplatform.core",
-  "productName": "Solaris Core",
+  "appId": "com.city.core",
+  "productName": "City Core",
   "publish": null,
   "directories": {
     "output": "app-builds"
@@ -32,7 +32,7 @@
     "target": [
       "AppImage"
     ],
-    "synopsis": "StratisCore.UI: Solaris' staking wallet.",
+    "synopsis": "City Core' staking wallet.",
     "category": "Utility",
     "artifactName": "${productName}-v${version}-${os}-${arch}.${ext}"
   },
