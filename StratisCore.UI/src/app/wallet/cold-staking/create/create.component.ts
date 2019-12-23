@@ -127,6 +127,12 @@ export class ColdStakingCreateComponent implements OnInit, OnDestroy {
                 }
             );
     };
+    
+    public getMaxBalance() {
+
+        let maxAmount = this.spendableBalance - (this.selectedFeeType.value * 100000000);
+        this.sendForm.patchValue({ amount: maxAmount / 100000000 });
+      };
 
   private startSubscriptions() {
       this.getWalletBalance();
