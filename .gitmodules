@@ -1,3 +1,6 @@
 [submodule "city-chain"]
 	path = city-chain
 	url = https://github.com/CityChainFoundation/city-chain.git
+[submodule "X42-BlockCore"]
+	path = X42-BlockCore
+	url = https://github.com/x42protocol/X42-BlockCore.git
