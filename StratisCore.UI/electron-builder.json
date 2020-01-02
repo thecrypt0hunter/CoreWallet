@@ -1,6 +1,6 @@
 {
-  "appId": "com.city.core",
-  "productName": "City Core",
+  "appId": "com.x42.core",
+  "productName": "x42 Core",
   "publish": null,
   "directories": {
     "output": "app-builds"
@@ -32,7 +32,7 @@
     "target": [
       "AppImage"
     ],
-    "synopsis": "City Core' staking wallet.",
+    "synopsis": "x42 Core cold staking wallet.",
     "category": "Utility",
     "artifactName": "${productName}-v${version}-${os}-${arch}.${ext}"
   },

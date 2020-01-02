@@ -32,12 +32,12 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/city-chain/src/City.Chain
+cd $build_directory/x42-BlockCore/src/x42.x42D
 dotnet restore
 dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
 echo $log_prefix chmoding the file
-chmod +x $build_directory/StratisCore.UI/daemon/City.Chain
+chmod +x $build_directory/StratisCore.UI/daemon/x42.x42D
 
 # node packaging
 echo $log_prefix Building and packaging StratisCore.UI

@@ -18,9 +18,9 @@ nodaemon = args.some(val => val === "--nodaemon" || val === "-nodaemon");
 
 let apiPort;
 if (testnet && !sidechain) {
-  apiPort = 24335;
+  apiPort = 42221;
 } else if (!testnet && !sidechain) {
-  apiPort = 4335;
+  apiPort = 42220;
 } else if (sidechain && testnet) {
   apiPort = 38225;
 } else if (sidechain && !testnet) {
@@ -55,7 +55,7 @@ function createWindow() {
     frame: true,
     minWidth: 1150,
     minHeight: 650,
-    title: "City Core",
+    title: "x42 Core",
     webPreferences: {
       webSecurity: false
     },
@@ -107,7 +107,7 @@ app.on('ready', () => {
     if (sidechain && !nodaemon) {
       startDaemon("Stratis.SidechainD");
     } else if (!nodaemon) {
-      startDaemon("City.Chain")
+      startDaemon("x42.x42D")
     }
   }
   createTray();
@@ -185,7 +185,7 @@ function startDaemon(daemonName) {
   });
 
   daemonProcess.stdout.on('data', (data) => {
-    writeLog(`City: ${data}`);
+    writeLog(`x42: ${data}`);
   });
 }
 
@@ -213,7 +213,7 @@ function createTray() {
       }
     }
   ]);
-  systemTray.setToolTip('City Core');
+  systemTray.setToolTip('x42 Core');
   systemTray.setContextMenu(contextMenu);
   systemTray.on('click', function() {
     if (!mainWindow.isVisible()) {

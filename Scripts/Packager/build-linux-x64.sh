@@ -5,7 +5,7 @@ configuration=Release
 os_platform=linux
 log_prefix=LINUX-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/city/release"
+release_directory="/tmp/x42"
 
 # exit if error
 set -o errexit
@@ -33,13 +33,13 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/city-chain/src/City.Chain
+cd $build_directory/x42-BlockCore/src/x42.x42D
 sudo dotnet clean
 sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
 echo $log_prefix chmoding the file
-sudo chmod +x $build_directory/StratisCore.UI/daemon/City.Chain
+sudo chmod +x $build_directory/StratisCore.UI/daemon/x42.x42D
 
 # node Build
 cd $build_directory/StratisCore.UI
