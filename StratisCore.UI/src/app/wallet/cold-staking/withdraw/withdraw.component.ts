@@ -83,7 +83,7 @@ export class ColdStakingWithdrawComponent implements OnInit, OnDestroy {
   private buildSendForm(): void {
       this.sendForm = this.fb.group({
           "address": ["", Validators.compose([Validators.required, Validators.minLength(26)])],
-          "amount": ["", Validators.compose([Validators.required, Validators.pattern(/^([0-9]+)?(\.[0-9]{0,8})?$/), Validators.min(0.00001), (control: AbstractControl) => Validators.max((this.spendableBalance - this.selectedFeeType.value) / 100000000)(control)])],
+          "amount": ["", Validators.compose([Validators.required, Validators.pattern(/^([0-9]+)?(\.[0-9]{0,8})?$/), Validators.min(0.00001), (control: AbstractControl) => Validators.max((this.spendableBalance) / 100000000)(control)])],
           "fee": ["medium", Validators.required],
           "password": ["", Validators.required]
       });
@@ -141,7 +141,7 @@ export class ColdStakingWithdrawComponent implements OnInit, OnDestroy {
 
   public getMaxBalance() {
 
-    let maxAmount = this.spendableBalance - (this.selectedFeeType.value * 100000000);
+    let maxAmount = this.spendableBalance;
     this.sendForm.patchValue({ amount: maxAmount / 100000000 });
   };
 

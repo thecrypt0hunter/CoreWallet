@@ -5,6 +5,7 @@ configuration=Release
 os_platform=osx
 log_prefix=MAC-BUILD
 build_directory=$(dirname $PWD) #$(dirname $(dirname "$0"))
+release_directory="/tmp/x42/${log_prefix}"
 
 # exit if error
 set -o errexit
@@ -13,6 +14,7 @@ set -o errexit
 echo "current environment variables:"
 echo "OS name:" $os_platform
 echo "Build directory:" $build_directory
+echo "Release directory:" $release_directory
 echo "Architecture:" $arch
 echo "Configuration:" $configuration
 
@@ -53,7 +55,16 @@ echo $log_prefix contents of the app-builds folder
 cd $build_directory/StratisCore.UI/app-builds/
 # replace the spaces in the name with a dot as CI system have trouble handling spaces in names.
 for file in *.{tar.gz,deb}; do mv "$file" `echo $file | tr ' ' '.'` 2>/dev/null || : ; done
+ls -al -h
 
-ls
+# Move files to release directory
+sudo rm -rf $release_directory
+sudo mkdir -p $release_directory
+sudo cp -r $build_directory/StratisCore.UI/app-builds/* $release_directory
+
+#Clear previous builds
+sudo rm -rf $build_directory/StratisCore.UI/app-builds
+sudo rm -rf $build_directory/StratisCore.UI/daemon
+sudo rm -rf $build_directory/StratisCore.UI/dist
 
 echo $log_prefix FINISHED build

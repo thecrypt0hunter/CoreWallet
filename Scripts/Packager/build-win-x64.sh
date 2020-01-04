@@ -2,8 +2,8 @@
 
 arch=x64
 configuration=Release
-os_platform=linux
-log_prefix=LINUX-BUILD
+os_platform=win
+log_prefix=WINDOWS-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
 release_directory="/tmp/x42/${log_prefix}"
 
@@ -28,6 +28,8 @@ cd $build_directory/StratisCore.UI
 
 echo $log_prefix Running npm install
 npm install --verbose
+#npm install --save-dev electron-winstaller
+#npm install --save-dev electron-builder-squirrel-windows
 
 echo $log_prefix FINISHED restoring dotnet and npm packages
 
@@ -38,14 +40,14 @@ sudo dotnet clean
 sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
-echo $log_prefix chmoding the file
-sudo chmod +x $build_directory/StratisCore.UI/daemon/x42.x42D
+#echo $log_prefix chmoding the file
+#sudo chmod +x $build_directory/StratisCore.UI/daemon/x42.x42D
 
 # node Build
 cd $build_directory/StratisCore.UI
 echo $log_prefix Building and packaging StratisCore.UI
 npm install
-sudo npm run package:linux
+sudo npm run package:windows64
 echo $log_prefix finished packaging
 
 echo $log_prefix contents of the app-builds folder

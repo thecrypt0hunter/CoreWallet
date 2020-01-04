@@ -5,7 +5,7 @@ configuration=Release
 os_platform=linux
 log_prefix=LINUXARM-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/x42"
+release_directory="/tmp/x42/${log_prefix}"
 
 # exit if error
 set -o errexit

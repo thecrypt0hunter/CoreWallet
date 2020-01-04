@@ -26,12 +26,12 @@
       <input type="text" class="form-control" [class.is-invalid]="sendFormErrors.hotWalletAddress" [class.is-valid]="!sendFormErrors.hotWalletAddress && sendForm.get('hotWalletAddress').valid" formControlName="hotWalletAddress" id="hotWalletAddress" placeholder="Please enter the delgated staking address here.">
       <div *ngIf="sendFormErrors.hotWalletAddress" class="invalid-feedback">{{ sendFormErrors.hotWalletAddress }}</div>
     </div>
-    <div class="form-group clearfix">
+    <!--<<div class="form-group clearfix">
       <label for="feeType">Fee type</label>
       <select class="form-control" [(ngModel)]="selectedFeeType" [ngModelOptions]="{standalone: true}">
         <option *ngFor="let feeType of feeTypes" [ngValue]="feeType" [selected]="feeType.id === 1">{{feeType.display}}</option>
       </select>
-    </div>
+    </div>-->
     <div class="form-group clearfix">
       <label for="walletPassword">Wallet Password</label>
       <input type="password" class="form-control" [class.is-invalid]="sendFormErrors.password" [class.is-valid]="!sendFormErrors.password && sendForm.get('password').valid" formControlName="password" id="walletPassword" placeholder="Please enter your wallet password.">

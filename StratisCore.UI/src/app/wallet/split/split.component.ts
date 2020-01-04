@@ -140,7 +140,7 @@ export class SplitComponent implements OnInit, OnDestroy {
         },
         () => {
           this.splitForm.patchValue({amount: +new CoinNotationPipe().transform(balanceResponse.maxSpendableAmount)});
-          this.estimatedFee = balanceResponse.fee;
+          this.estimatedFee = 0 ;// balanceResponse.fee;
         }
       );
   };

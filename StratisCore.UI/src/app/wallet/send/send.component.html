@@ -33,12 +33,12 @@
                 <input type="text" class="form-control" [class.is-invalid]="sendFormErrors.address" [class.is-valid]="!sendFormErrors.address && sendForm.get('address').valid" formControlName="address" id="destinationAddress" placeholder="Please enter the destination address here.">
                 <div *ngIf="sendFormErrors.address" class="invalid-feedback">{{ sendFormErrors.address }}</div>
               </div>
-              <div class="form-group clearfix">
+              <!--<<div class="form-group clearfix">
                 <label for="feeType">Fee type</label>
                 <select class="form-control" [(ngModel)]="selectedFeeType" [ngModelOptions]="{standalone: true}">
                   <option *ngFor="let feeType of feeTypes" [ngValue]="feeType" [selected]="feeType.id === 0">{{feeType.display}}</option>
                 </select>
-              </div>
+              </div>-->
               <div class="form-group clearfix">
                 <label for="walletPassword">Wallet Password</label>
                 <input type="password" class="form-control" [class.is-invalid]="sendFormErrors.password" [class.is-valid]="!sendFormErrors.password && sendForm.get('password').valid" formControlName="password" id="walletPassword" placeholder="Please enter your wallet password." >
@@ -48,7 +48,7 @@
             </form>
             <div class="modal-footer p-0">
               <button *ngIf="!isSending" type="button" [disabled]="isSending" class="btn btn-danger text-uppercase" (click)="activeModal.close('Close click')">Cancel</button>
-              <button *ngIf="!isSending" type="button" class="btn btn-primary btn-block text-uppercase" [disabled]="!sendForm.valid || isSending || !estimatedFee" (click)="send()">Send</button>
+              <button *ngIf="!isSending" type="button" class="btn btn-primary btn-block text-uppercase" [disabled]="!sendForm.valid || isSending" (click)="send()">Send</button>
               <!-- SVG -->
               <div *ngIf="isSending" class="Loading LoadingSend col-2 mx-auto">
                 <img src="./assets/images/loading.svg" width="30" height="30"/>
