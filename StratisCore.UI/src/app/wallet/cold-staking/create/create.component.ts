@@ -52,8 +52,9 @@ export class ColdStakingCreateComponent implements OnInit, OnDestroy {
         this.feeTypes.push({ id: 0, display: 'Low - 0.0001 ' + this.coinUnit, value: 0.0001 });
         this.feeTypes.push({ id: 1, display: 'Medium - 0.001 ' + this.coinUnit, value: 0.001 });
         this.feeTypes.push({ id: 2, display: 'High - 0.01 ' + this.coinUnit, value: 0.01 });
+        this.feeTypes.push({ id: 3, display: 'Free - 0 ' + this.coinUnit, value: 0 });
 
-        this.selectedFeeType = this.feeTypes[1];
+        this.selectedFeeType = this.feeTypes[3];
     }
 
     private buildSendForm(): void {
