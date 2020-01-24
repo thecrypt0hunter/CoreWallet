@@ -33,9 +33,9 @@ echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/X42-BlockCore/src/x42.x42D
-sudo dotnet clean
-sudo dotnet restore
+cd $build_directory/X42-FullNode/src/x42.x42D/
+#sudo dotnet clean
+#sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
 echo $log_prefix chmoding the file
