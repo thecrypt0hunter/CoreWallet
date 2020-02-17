@@ -31,6 +31,7 @@
     "icon": "dist/assets/images/stratis/",
     "target": [
       "deb",
+      "AppImage",
       "tar.gz"
     ],
     "synopsis": "StratisCore.UI: Stratis' staking wallet.",
