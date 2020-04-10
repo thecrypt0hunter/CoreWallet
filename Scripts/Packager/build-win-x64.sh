@@ -22,7 +22,7 @@ dotnet --info
 # Initialize dependencies
 echo $log_prefix STARTED restoring dotnet and npm packages
 cd $build_directory
-git submodule update --init --recursive
+#git submodule update --init --recursive
 
 cd $build_directory/StratisCore.UI
 

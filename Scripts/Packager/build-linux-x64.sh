@@ -22,13 +22,12 @@ dotnet --info
 # Initialize dependencies
 echo $log_prefix STARTED restoring dotnet and npm packages
 cd $build_directory
-git submodule update --init --recursive
+#git submodule update --init --recursive
 
 cd $build_directory/StratisCore.UI
 
 echo $log_prefix Running npm install
 npm install --verbose
-
 echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
@@ -44,7 +43,7 @@ sudo chmod +x $build_directory/StratisCore.UI/daemon/City.Chain
 # node Build
 cd $build_directory/StratisCore.UI
 echo $log_prefix Building and packaging StratisCore.UI
-npm install
+npm install ##--cache /tmp/empty-cache
 sudo npm run package:linux
 echo $log_prefix finished packaging
 echo $log_prefix contents of the app-builds folder
