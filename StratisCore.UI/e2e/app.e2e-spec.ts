@@ -8,8 +8,8 @@ describe('stratis-core App', () => {
     page = new AngularElectronPage();
   });
 
-  it('Page title should be City Core', () => {
+  it('Page title should be Trustaking City Core', () => {
     page.navigateTo('/');
-    expect(page.getTitle()).toEqual('City Core');
+    expect(page.getTitle()).toEqual('Trustaking City Core');
   });
 });

@@ -1,9 +1,9 @@
 {
   "name": "city-core",
-  "description": "Trustaking City Core Wallet",
-  "version": "1.0.1",
+  "description": "Trustaking Trustaking City Core Wallet",
+  "version": "1.0.2",
   "author": {
-    "name": "City Core",
+    "name": "Trustaking City Core",
     "email": "support@citychain.com"
   },
   "license": "MIT",
@@ -62,7 +62,7 @@
     "npm": "^6.14.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.13.4",
+    "@angular-devkit/build-angular": "^0.901.1",
     "@angular/animations": "7.2.10",
     "@angular/cli": "^7.3.9",
     "@angular/common": "7.2.10",

@@ -1,6 +1,6 @@
 {
   "appId": "com.city.core",
-  "productName": "City Core",
+  "productName": "Trustaking City Core",
   "publish": null,
   "directories": {
     "output": "app-builds"
@@ -32,7 +32,7 @@
     "target": [
       "AppImage"
     ],
-    "synopsis": "City Core' staking wallet.",
+    "synopsis": "Trustaking City Core' staking wallet.",
     "category": "Utility",
     "artifactName": "${productName}-v${version}-${os}-${arch}.${ext}"
   },
