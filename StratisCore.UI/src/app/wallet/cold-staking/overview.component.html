@@ -9,7 +9,7 @@
               <h3 class="title-bottom-border">DELEGATED BALANCE</h3>
               <h1>
                 {{ (confirmedColdBalance | coinNotation) || (0 | coinNotation) }}
-                <span class="text-uppercase"> {{ coinUnit }}</span><span class="text-lightblue" style="font-size: 70%;"> ≈{{ spendableColdBalanceBaseValue }} BTC</span>
+                <span class="text-uppercase"> {{ coinUnit }}</span><span class="text-lightblue" style="font-size: 70%;"></span>
               </h1>
 
               <ul class="list-unstyled text-lightblue">
@@ -67,7 +67,18 @@
                         {{ transaction.transactionType }}
                       </span>
                     </div>
-                    <div class="col text-white row-column text-right">
+
+                    <div class="col text-white row-column text-right" *ngIf="transaction.transactionType == 'withdrawn'">
+                      <span>
+                        - {{ transaction.transactionAmount + transaction.transactionFee | coinNotation }} {{ coinUnit }}
+                      </span>
+                    </div>
+                    <div class="col text-white row-column text-right" *ngIf="transaction.transactionType == 'delegated'">
+                      <span>
+                        + {{ transaction.transactionAmount + transaction.transactionFee | coinNotation }} {{ coinUnit }}
+                      </span>
+                    </div>
+                    <div class="col text-white row-column text-right" *ngIf="transaction.transactionType == 'cold-stake'">
                       <span>
                         + {{ transaction.transactionAmount + transaction.transactionFee | coinNotation }} {{ coinUnit }}
                       </span>
