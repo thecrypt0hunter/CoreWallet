@@ -180,9 +180,19 @@ function startDaemon(daemonName) {
 	  daemonPath = path.resolve(__dirname, '..//..//resources//daemon//' + daemonName);
   }
 
-  daemonProcess = spawnDaemon(daemonPath, [args.join(' ').replace('--','-')], {
-    detached: true
-  });
+//  daemonProcess = spawnDaemon(daemonPath, [args.join(' ').replace('--','-')], {
+//    detached: true
+//  });
+
+const commandLineArguments = [];
+commandLineArguments.push('-txindex=1'); // Required for History (Block) explorer.
+
+daemonProcess = spawnDaemon(daemonPath, commandLineArguments, {
+  detached: true
+});
+
+///  End of new code
+
 
   daemonProcess.stdout.on('data', (data) => {
     writeLog(`City: ${data}`);
