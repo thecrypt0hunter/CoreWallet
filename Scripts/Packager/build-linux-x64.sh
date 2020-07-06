@@ -1,11 +1,11 @@
 #!/bin/bash
-
 arch=x64
 configuration=Release
 os_platform=linux
 log_prefix=LINUX-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/Solaris/Release"
+release_directory="/tmp/solris/${log_prefix}"
+node_directory=$build_directory/blockcore-nodes/XLR/src/Solaris.Node
 
 # exit if error
 set -o errexit
@@ -22,43 +22,35 @@ dotnet --info
 # Initialize dependencies
 echo $log_prefix STARTED restoring dotnet and npm packages
 cd $build_directory
-git submodule update --init --recursive
+#git submodule update --init --recursive
 
 cd $build_directory/StratisCore.UI
 
 echo $log_prefix Running npm install
-npm install --verbose
+sudo npm install --verbose
 
 echo $log_prefix FINISHED restoring dotnet and npm packages
 
 # dotnet publish
 echo $log_prefix running 'dotnet publish'
-cd $build_directory/SolarisBitcoinFullNode/src/Stratis.SolarisD
-sudo dotnet clean
-sudo dotnet restore
+cd $node_directory
+#sudo dotnet clean
+#sudo dotnet restore
 sudo dotnet publish -c $configuration -r $os_platform-$arch -v m -o $build_directory/StratisCore.UI/daemon
 
-# Workaround to install FodyNlogAdapter
-mkdir ~/fody
-wget -P ~/fody https://globalcdn.nuget.org/packages/stratis.fodynlogadapter.3.0.4.1.nupkg
-unzip ~/fody/stratis.fodynlogadapter.3.0.4.1.nupkg -d ~/fody
-sudo cp ~/fody/lib/netstandard2.0/* $build_directory/StratisCore.UI/daemon/
-rm -rf ~/fody
-
-echo $log_prefix chmoding the file
-sudo chmod +x $build_directory/StratisCore.UI/daemon/Stratis.SolarisD
+echo $log_prefix chmoding the blockcore files
+sudo chmod +x $build_directory/StratisCore.UI/daemon/Blockcore*
 
 # node Build
 cd $build_directory/StratisCore.UI
 echo $log_prefix Building and packaging StratisCore.UI
-npm install
 sudo npm run package:linux
 echo $log_prefix finished packaging
 
 echo $log_prefix contents of the app-builds folder
 cd $build_directory/StratisCore.UI/app-builds/
 # replace the spaces in the name with a dot as CI system have trouble handling spaces in names.
-for file in *.{tar.gz,deb,AppImage}; do mv "$file" `echo $file | tr ' ' '.'` 2>/dev/null || : ; done
+for file in *.{tar.gz,deb,AppImage}; do sudo mv "$file" `echo $file | tr ' ' '.'` 2>/dev/null || : ; done
 ls -al -h
 
 # Move files to release directory
