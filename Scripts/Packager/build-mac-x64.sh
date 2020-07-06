@@ -5,7 +5,7 @@ configuration=Release
 os_platform=osx
 log_prefix=MAC-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/solris/${log_prefix}"
+release_directory="/tmp/solaris/${log_prefix}"
 node_directory=$build_directory/blockcore-nodes/XLR/src/Solaris.Node
 
 # exit if error

@@ -1,6 +1,6 @@
 {
-  "appId": "com.city.core",
-  "productName": "City Core",
+  "appId": "com.solarisplatform.core",
+  "productName": "Solaris Core",
   "publish": null,
   "directories": {
     "output": "app-builds"
@@ -25,14 +25,18 @@
     "target": [
       "nsis"
     ],
+    "signingHashAlgorithms": [ "sha256" ],
+    "certificateSubjectName": "CN=CryptSoft B.V., O=CryptSoft B.V., STREET=Siriusdreef 17-27, L=Hoofddorp, S=North-Holland, PostalCode=2132 WT, C=NL",
     "artifactName": "${productName}-v${version}-setup-${os}-${arch}.${ext}"
   },
   "linux": {
     "icon": "dist/assets/images/",
     "target": [
+      // "deb",
+      // "tar.gz",
       "AppImage"
     ],
-    "synopsis": "City Core' staking wallet.",
+    "synopsis": "Blockcore Solaris' staking wallet.",
     "category": "Utility",
     "artifactName": "${productName}-v${version}-${os}-${arch}.${ext}"
   },

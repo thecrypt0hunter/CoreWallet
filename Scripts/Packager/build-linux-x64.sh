@@ -4,7 +4,7 @@ configuration=Release
 os_platform=linux
 log_prefix=LINUX-BUILD
 build_directory=$(dirname $(dirname "$PWD"))
-release_directory="/tmp/solris/${log_prefix}"
+release_directory="/tmp/solaris/${log_prefix}"
 node_directory=$build_directory/blockcore-nodes/XLR/src/Solaris.Node
 
 # exit if error

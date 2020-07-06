@@ -1,18 +1,18 @@
 {
-  "name": "city-core",
-  "description": "City Core Wallet",
-  "version": "3.0.0",
+  "name": "solaris-core",
+  "description": "Solaris Core Wallet",
+  "version": "3.0.2",
   "author": {
-    "name": "City Core",
-    "email": "support@citychain.com"
+    "name": "Solaris Platform",
+    "email": "support@solarisplatform.com"
   },
   "license": "MIT",
-  "homepage": "https://github.com/CityChainFoundation/",
+  "homepage": "https://github.com/SolarisPlatform/SolarisCore",
   "keywords": [
     "fullnode",
     "ui",
-    "City",
-    "City Chain",
+    "solaris",
+    "solarisplatform",
     "core",
     "bitcoin",
     "angular",
